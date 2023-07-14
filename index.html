@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/stylee.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="pokemon-content">
+            <div class="pokemon-info">
+                <h1 id="name"></h1><span id="type"></span>
+                <img id="sprite" class="sprite-pokemon">
+            </div>
+            <div class="pokemons-list">
+                <ul id="pokedex">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        getPokemons(0, 20);
+
+        async function getPokemons(offset = 0, limit = 20){
+            const req = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`);
+            const {results} = await req.json();
+            renderListPokemons(results);
+
+        }
+
+        async function getPokemon(url){
+            const req = await fetch(url);
+            const pokemon = await req.json();
+            renderInfoPokemon(pokemon);
+        }
+        
+        function renderListPokemons(pokemons){
+            let elem = document.getElementById("pokedex");
+            pokemons.forEach(pokemon => {
+                let list = document.createElement("li");
+                list.addEventListener('click', () => getPokemon(pokemon.url));
+                list.innerHTML = `${pokemon.name}`;
+                elem.appendChild(list);
+            });
+        }
+
+        function renderInfoPokemon(pokemon){
+            let name = document.getElementById('name');
+            name.innerText = pokemon.name;
+
+            let sprite = document.getElementById('sprite');
+            sprite.setAttribute("src", `${pokemon.sprites.front_default}`);
+
+            let elem = document.getElementById('type');
+
+            let {types} = pokemon;
+            if(types.length >= 2){
+                elem.innerText = types[0].type.name+ " " + types[1].type.name;
+            }else{
+                elem.innerText = types[0].type.name;
+            }
+                 
+        }
+
+    </script>
+</body>
+</html>
