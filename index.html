@@ -8,12 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="pokemon-content">
-            <div class="pokemon-info">
-                <h1 id="name"></h1><span id="type"></span>
-                <img id="sprite" class="sprite-pokemon">
+        <div class="content">
+            <div id="info" class="info">
+                
             </div>
-            <div class="pokemons-list">
+            <div class="list">
                 <ul id="pokedex">
 
                 </ul>
@@ -31,14 +30,8 @@
 
         }
 
-        async function getPokemon(url){
-            const req = await fetch(url);
-            const pokemon = await req.json();
-            renderInfoPokemon(pokemon);
-        }
-        
         function renderListPokemons(pokemons){
-            let elem = document.getElementById("pokedex");
+            const elem = document.getElementById("pokedex");
             pokemons.forEach(pokemon => {
                 let list = document.createElement("li");
                 list.addEventListener('click', () => getPokemon(pokemon.url));
@@ -47,22 +40,26 @@
             });
         }
 
+        async function getPokemon(url){
+            const req = await fetch(url);
+            const pokemon = await req.json();
+            renderInfoPokemon(pokemon);
+        }
+        
+        
+
         function renderInfoPokemon(pokemon){
-            let name = document.getElementById('name');
-            name.innerText = pokemon.name;
-
-            let sprite = document.getElementById('sprite');
-            sprite.setAttribute("src", `${pokemon.sprites.front_default}`);
-
-            let elem = document.getElementById('type');
-
-            let {types} = pokemon;
-            if(types.length >= 2){
-                elem.innerText = types[0].type.name+ " " + types[1].type.name;
-            }else{
-                elem.innerText = types[0].type.name;
-            }
-                 
+            const {id, name, sprites, types, weight, height} = pokemon;
+            const info = document.getElementById('info');
+            info.innerHTML= '';
+            info.innerHTML = `
+                <h1>${id} ${name}</h1>
+                <span>${types.length == 1 ? types[0].type.name : types[0].type.name + ' ' + types[1].type.name}</span>
+                <img src="${sprites.front_default}">
+                <p>Height: ${height}</p>
+                <p>Weight: ${weight}</p>
+            `;
+        
         }
 
     </script>
