@@ -4,7 +4,7 @@ Projeto para estudo de fetch e async/await do JavaScript. Dados providos pela AP
 ## Tecnologias Utilizadas
 - HTML
 - CSS
-- JavaSccript
+- JavaScript
 
 ![pokedex](https://github.com/FranciscoDavi/pokedex/assets/51896688/7ae33089-8c2d-42ec-b823-0b61da6534c5)
 
