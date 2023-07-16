@@ -1,7 +1,7 @@
 # Pokedex
 Projeto para estudo de fetch e async/await do JavaScript. Dados providos pela API PokeAPI (https://pokeapi.co/).
 
-Confira em: <a href="https://franciscodavi.github.io/pokedex/" target="">Pokedex</a>.
+Confira em: <a href="https://franciscodavi.github.io/pokedex/" target="blank">Pokedex</a>.
 
 ## Tecnologias Utilizadas
 - HTML
