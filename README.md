@@ -1,5 +1,5 @@
 # Pokedex
-Projeto para estudo de fetch e async/await do JavaScript. Dados providos pela API PokeApi (https://pokeapi.co/).
+Projeto para estudo de fetch e async/await do JavaScript. Dados providos pela API PokeAPI (https://pokeapi.co/).
 
 https://franciscodavi.github.io/pokedex/
 
