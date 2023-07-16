@@ -10,7 +10,11 @@
 
 .container{
     padding: 5%;
-
+}
+.title{
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem;
 }
 
 ul{
@@ -21,7 +25,6 @@ ul{
     display: flex;
     padding: 1rem;
     max-height: 30rem;
-    max-width: 100%;
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, .2);
 }
@@ -74,4 +77,43 @@ ul{
 .list li:hover{
     cursor: pointer;
     background-color: rgba(211, 211, 211, 0.2);
+}
+
+/* max-width  */
+@media screen and (max-width: 650px) {
+    .title{
+        font-size: 1.5rem;
+        margin: .5rem;
+        padding: 0;
+    }
+    .container{
+        padding: 0 1rem;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        max-height: 40rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(0, 0, 0, .2);
+    }
+
+	.info{
+        width: 100%;
+        padding: .5rem 0;
+        margin: .5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+    }
+    .list{
+        padding: 0;
+        width: 100%;
+    }
+    .list::-webkit-scrollbar{
+        width:8px;
+        margin: 0rem;
+    }
+    
+    
+   
 }
